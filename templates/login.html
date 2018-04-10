@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login Form </title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+<style type="text/css">
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+.margin {
+  margin: 0 !important;
+}
+
+
+body {
+  /* Location of the image */
+  background-image: url(https://www.terratracking.com/track/src/v2.15/Login/TUTT/images/splash-screen.png);
+  
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+}
+
+</style>
+  
+</head>
+
+<body class="">
+
+
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form method="post" action="/login" id="login" class="login-form" style="width:350px;">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="../static/images/profile1.png" alt="" class="responsive-img valign profile-image-login">
+           
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input class="validate" id="email" type="email" name="email" value="{{ name }}" placeholder="Email">
+           
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" name="pass"  value="{{ pas }}" placeholder="Password">
+            
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+                            {% if rem %}
+              <input type="checkbox" class="remem" id="remember-me" name="remember" value="{{rem}}" checked/>
+              {% else %}
+                  <input type="checkbox" class="remem" id="remember-me" name="remember" value="no"/>
+              {% endif %}
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a  class="btn waves-effect waves-light col s12" onclick="submit()">Login</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="/show_register">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="/show_register">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+ 
+
+
+
+ <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--materialize js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script>
+    function submit() {
+        document.getElementById('login').submit();
+    }
+</script>
+ {% if a %}
+<script type="text/javascript">
+   alert("invalid user name or pass word");
+</script>
+{% endif %}
+{% if b %}
+<script type="text/javascript">
+    alert("successfully registered")
+</script>
+{% endif %}
+{% if log %}
+<script>
+    alert("you were successfully logout")
+</script>
+{% endif %}
+<script>
+    $(document).ready(function () {
+                $('.remem').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("Checkbox is checked.");
+                {#$(this).parent().parent().parent().find(".old_prom").show();#}
+                $(this).val('yes');
+                // $(".prom_head1").slideToggle("slow");
+                //alert("Checkbox is checked.");
+            }
+            else if($(this).prop("checked") == false){
+                 // $(".prom").slideToggle("slow");
+                 $(this).val('no');
+                 $(this).parent().parent().parent().find(".old_prom").hide();
+                //alert("Checkbox is unchecked.");
+            }
+        });
+    })
+
+</script>
+</body>
+
+</html>

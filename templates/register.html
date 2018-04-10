@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Signup / Registration form </title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+<style type="text/css">
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+.margin {
+  margin: 0 !important;
+}
+
+body {
+  /* Location of the image */
+  background-image: url(https://www.terratracking.com/track/src/v2.15/Login/TUTT/images/splash-screen.png);
+  
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+}
+</style>
+  
+</head>
+
+<body class="">
+
+
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form" id="reg_form" style="width:350px;" method="post" action="/register">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="profile1.png" alt="" class="responsive-img valign profile-image-login">
+           
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="username" type="text" name="name" class="validate" placeholder="Username">
+           
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix"></i>
+            <input id="email" type="email"  name="email" class="validate" placeholder="Email">
+            
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" name="pass1" class="validate" placeholder="Password">
+           
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password-again" type="password" name="pass2" placeholder="Re-type password">
+           
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a  class="btn waves-effect waves-light col s12" onclick="register()">Register Now</a>
+          </div>
+          <div class="input-field col s12">
+            <p class="margin center medium-small sign-up">Already have an account? <a href="/show_login">Login</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  
+
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+
+  <!-- jQuery Library -->
+ <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--materialize js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script>
+    function register() {
+        document.getElementById('reg_form').submit();
+    }
+</script>
+  {% if a %}
+<script type="text/javascript">
+    alert("unable to register");
+</script>
+{% endif %}
+{% if b %}
+<script type="text/javascript">
+    alert("please fill all the fields")
+</script>
+{% endif %}
+</body>
+
+</html>

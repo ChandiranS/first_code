@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Python Dialog Flow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
+  <!-- Material Link -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+	<link rel="stylesheet" href="../static/css/main.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 leftside">
+			
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv" ><br>
+					<i class="material-icons intent_icon" style="vertical-align:middle">&#xE6DD;</i> <span class="head_python">Python </span>
+				</div>
+			</div>
+			<div class="row " >
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+					<div class="row" >
+						<div onclick="dropdownopen();" class="col-sm-10 col-md-10 col-lg-10 col-xs-10 mdl-js-button mdl-js-ripple-effect"><br>
+                                 {% if agent_name %}
+							<span class="side_text agent_name " >{{ agent_name }} &nbsp;</span><span class="glyphicon glyphicon-triangle-bottom side_cart"></span><br>
+                            {% else %}
+                            <span class="side_text agent_name" >No Agent Available &nbsp;</span><span class="glyphicon glyphicon-triangle-bottom side_cart"></span><br>
+                            {% endif %}
+						</div>
+						<!-- <div onclick="dropdownopen();" class="col-sm-10 col-md-10 col-lg-10 col-xs-10 mdl-js-button mdl-js-ripple-effect" ><br>
+							<span class="side_text" >Entertainment &nbsp;<span class="glyphicon glyphicon-triangle-bottom side_cart"></span></span>
+						</div> -->
+						<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+							<div class="mdl-js-button mdl-js-ripple-effect">
+								<i class="material-icons plus_icon">&#xE8B8;</i><br><br>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="" style="">
+				<div class="row mydropdown" style="background-color:#fff;display:none;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+                                {% if agent_name %}
+								<i class="material-icons side_icon" style="vertical-align:middle;margin-top: -19px;" id="agess"></i><span class="side_text agent_names" style="position: absolute;margin-top: -7px;" id="age">{{ agent_name }} &nbsp;</span>
+                                {% else %}
+                                <i class="material-icons side_icon" style="vertical-align:middle;margin-top: -19px;"></i><span class="side_text agent_names" style="position: absolute;margin-top: -7px;">NO Agent Available &nbsp;</span>
+                                {% endif %}
+							</div>
+							
+						</div>
+					</div>
+					<div onclick="addnew_agent();" class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+								<i class="material-icons side_icon" style="vertical-align:middle;margin-top: -19px;">&#xE145;</i><span class="side_text" style="position: absolute;margin-top: -7px;">Create New Agent &nbsp;</span>
+							</div>
+							
+						</div>
+					</div>
+					<div onclick="viewallagent();" class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+							
+								<i class="material-icons side_icon" style="vertical-align:middle;margin-top: -19px;">&#xE8EF;</i><span class="side_text" style="position: absolute;margin-top: -7px;">View All Agents &nbsp;</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+					<div class="row">
+						<div onclick="intent_open();" class="col-sm-10 col-md-10 col-lg-10 col-xs-10 mdl-js-button mdl-js-ripple-effect"><br>
+							<i class="material-icons side_icon" style="vertical-align:middle">&#xE0C9;</i><span class="side_text">Intents &nbsp;</span>
+						</div>
+						
+						<div onclick="addintents();" class="col-sm-2 col-md-2 col-lg-2 col-xs-2 ">
+							<div class="mdl-js-button mdl-js-ripple-effect">
+								<i class="material-icons plus_icon">&#xE145;</i><br><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" >
+				<div  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+					<div class="row">
+						<div onclick="entity_open();" class="col-sm-10 col-md-10 col-lg-10 col-xs-10 mdl-js-button mdl-js-ripple-effect"><br>
+						
+							<i class="material-icons side_icon" style="vertical-align:middle">&#xE335;</i><span class="side_text">Enities &nbsp;</span>
+						</div>
+						<div onclick="add_entity();" class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+							<div class="mdl-js-button mdl-js-ripple-effect">
+								<i class="material-icons plus_icon">&#xE145;</i><br><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+{#			<div class="row">#}
+{#				<div onclick="training_open();" class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">#}
+{#					<div class="row">#}
+{#						<div  class="col-sm-10 col-md-10 col-lg-10 col-xs-10 "><br>#}
+{#						#}
+{#							<i class="material-icons side_icon" style="vertical-align:middle">&#xE80C;</i><span class="side_text">Training &nbsp;</span>#}
+{#						</div>#}
+{#						<!-- <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">#}
+{#							<i class="material-icons plus_icon">&#xE145;</i><br>#}
+{#						</div> -->#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+                    <a href="/logout">
+        			<div class="row">
+				<div  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+
+					<div class="row">
+						<div  class="col-sm-10 col-md-10 col-lg-10 col-xs-10 "><br>
+
+                            <i class="material-icons side_icon" style="vertical-align:middle">&#xE8AC;</i><span class="side_text">Logout &nbsp;</span>
+						</div>
+						<!-- <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+							<i class="material-icons plus_icon">&#xE145;</i><br>
+						</div> -->
+					</div>
+
+				</div>
+			</div>
+			</a>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 center" >
+            <form id="new_intent_form" method="post" action="/create_intents">
+			<div class="addintents" style="display:none;">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8" >
+{#								<form action="#">#}
+								  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+									<input class="mdl-textfield__input" type="text" name="new_i_name" id="new_i_name" required>
+									<label class="mdl-textfield__label" for="sample1" style="width:100%;">Enter Intent Name</label>
+								  </div>
+								  
+{#								</form>#}
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" align="center"><br>
+                                <input type="hidden" name="new_req" id="new_req">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="new_intent_sub()" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								 Save
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+			<br>
+
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+							<div  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Training Phrases &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 359px;margin-top: 0px;">&#xE313;</i></span>
+							</div>
+							
+						</div><br>
+						<div class="all_intent" style="display:none;">
+							<div class="row">
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+{#									<form>#}
+									  <div class="input-group">
+										<input type="text" class="form-control" placeholder="Search Training Pharse">
+										<div class="input-group-btn">
+										  <button class="btn btn-default" type="submit" onclick="new_intent_sub()">
+											<i class="glyphicon glyphicon-search"></i>
+										  </button>
+										</div>
+									  </div>
+{#									</form>#}
+								</div>
+							
+							</div><br>
+							<div class="row cont">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head">
+                                    <p class="new_spl" style="display: none"></p>
+									<div class="form-group input_div">
+										<!-- <label for="inputdefault">Default input</label> -->
+										<input class="form-control input-lg inputvalue" id="inputdefault" type="text" name="new_user[]" placeholder="Add Input Content">
+                                        <i class="material-icons delete_new_sent" style="position:absolute;margin-left:562px;margin-top:-37px">&#xE872;</i>
+                                        <div style="height:100px;overflow:scroll;width:180px;display:none;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);background-color:#fff;overflow-x:hidden;" class="mydivision">
+	<p class="selecttext">Selected Text</p>
+	<p>Haiii Helllo How are you!!!</p>
+
+</div>
+									</div>
+								</div>
+							</div>
+                            			<div class="row" onclick="add_cont()">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i> New Content</p>
+								</div>
+							</div>
+							<div class="new_tab"></div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+						
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Action and Parameters<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 349px;margin-top: 0px;">&#xE313;</i></span>
+							</div>
+							
+						</div><br>
+						<div class="all_intent" style="display:none;">
+
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table table-bordered param_tab">
+										<thead>
+
+											<th>Required</th>
+											<th>Parameter Name</th>
+											<th>Entity</th>
+											<th>Value</th>
+{#											<th>isList</th>#}
+                                              <th class="prom_head">Prompts</th>
+
+										</thead>
+										<tbody>
+										  <tr>
+											<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="old_open_prom">
+											  <input type="checkbox" id="old_open_prom" class="mdl-checkbox__input openprom" name="new_req[]">
+											  </label>
+											</td>
+											<td><div class="form-group">
+											
+											  <input type="text" class="form-control new_par_name" name="new_param[]" id="usr" placeholder="Enter Name">
+											</div></td>
+											<td><div class="form-group">
+											
+											  <input  class="form-control new_ent_name" name="new_entity[]" list="new_entt"  placeholder="Enter Entity" autocomplete="off">
+                                                <datalist id="new_entt">
+                                                    <p class="dt"></p>
+
+                                                </datalist>
+											</div></td>
+											<td><div class="form-group">
+												<input type="text" class="form-control" name="new_value[]" id="usr" placeholder="Enter Value">
+											</div></td>
+{#											<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">#}
+{#											  <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">#}
+{#											  </label>#}
+{#											</td>#}
+                                                                    <td style="display: none;" class="prom">
+                                                <div class="form-group">
+
+											        <input type="text" class="form-control" id="usr" name="new_prompts[]" placeholder="Enter Entity">
+											    </div>
+											</td>
+                                              <td><i class="material-icons delete_new_param">&#xE872;</i></td>
+										  </tr>
+										  
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row" onclick="add_param()">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i> New Parameter</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Responses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 400px;    margin-top: 0px;">&#xE313;</i></span>
+							</div>
+							
+						</div><br>
+						<div class="all_intent" style="display:none;">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table table-bordered resp_tab">
+										<thead>
+
+											<th>S.No</th>
+											<th>Required </th>
+                                        <th>Delete</th>
+											
+
+										</thead>
+										<tbody>
+										  <tr>
+											<td></td>
+											<td><div class="form-group">
+											
+											  <input type="text" class="form-control" id="usr" name="new_responses[]" placeholder="Enter response Text">
+											</div></td>
+                                               <td><i class="material-icons delete_new_resp">&#xE872;</i></td>
+											
+										  </tr>
+										  
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+											<button type="button" class="btn btn-default mybtn" style="outline:none;width:100%;" onclick="add_res()"> Add Responses</button>
+										</div>
+									</div><br>
+								</div>
+							</div>
+						<br>
+						</div>
+					</div>
+				</div><br>
+
+			</div>
+                </form>
+
+                        <div class="oldintents" style="display:none;">
+                            <form id="old_intent_form" method="post" action="/update_intents">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8" >
+{#								<form action="#">#}
+								  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+									<input class="mdl-textfield__input" type="text" id="old_intent_name" name="old_i_name" required>
+									<label class="mdl-textfield__label" for="sample1" style="width:100%;"></label>
+								  </div>
+
+{#								</form>#}
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" align="center"><br>
+                                <input type="hidden" id="old_req" name="old_req">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;" onclick="old_intent_sub()">
+								 Save
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div>
+                                <br>
+			<br>
+
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+							<div  class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Training Phrases &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 359px;margin-top: 0px;">&#xE313;</i></span>
+							</div>
+
+						</div><br>
+						<div class="all_intent" style="display:none;">
+							<div class="row">
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+{#									<form>#}
+									  <div class="input-group">
+										<input type="text" class="form-control" placeholder="Search Training Pharse">
+										<div class="input-group-btn">
+										  <button class="btn btn-default" type="submit">
+											<i class="glyphicon glyphicon-search"></i>
+										  </button>
+										</div>
+									  </div>
+{#									</form>#}
+								</div>
+
+							</div><br>
+							<div class="row" >
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head">
+									<div class="form-group old_input_div">
+										<!-- <label for="inputdefault">Default input</label> -->
+										<input class="form-control input-lg inputdefaultt old_inputvalue" id="inputdefaultt" type="text" name="old_user[]" placeholder="Add Input Content"  >
+                                        <i class="material-icons delete_old_sent" style="position:absolute;margin-left:562px;margin-top:-37px">&#xE872;</i>
+                                        <div style="height:100px;overflow:scroll;width:180px;display:none;box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);background-color:#fff;overflow-x:hidden;" class="oldmydivision">
+                                                     </div>
+
+									</div>
+                                    <div class="old_user">
+
+                                    </div>
+								</div>
+							</div>
+                            			<div class="row" onclick="add_old_cont()">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i> New Content</p>
+								</div>
+							</div>
+                            <div class="old_tab_div">
+                                <div class="row d_ent_param">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<table class="table table-bordered">
+							<tbody>
+
+							</tbody>
+					  </table>
+					</div>
+				</div>
+                            </div>
+						</div>
+
+					</div>
+
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Action and Parameters<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 349px;margin-top: 0px;">&#xE313;</i></span>
+							</div>
+
+						</div><br>
+						<div class="all_intent" style="display:none;">
+
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table table-bordered">
+										<thead>
+										  <tr>
+											<th>Required</th>
+											<th>Parameter Name</th>
+											<th>Entity</th>
+											<th>Value</th>
+{#											<th>isList</th>#}
+											<th  class="prom_head1">Prompts</th>
+										  </tr>
+										</thead>
+										<tbody class="old_params">
+										  <tr>
+											<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="openprom">
+											  <input type="checkbox" id="openprom" class="mdl-checkbox__input old_open_prom" name="old_req[]" value="False">
+											  </label>
+											</td>
+											<td><div class="form-group">
+
+											  <input type="text" class="form-control old_param_name" name="old_param[]" id="usr" placeholder="Enter Name">
+											</div></td>
+											<td><div class="form-group">
+
+											  <input  class="form-control old_entity_name" list="sam" placeholder="Enter Entity" name="old_entity[]" autocomplete="off">
+                                                <datalist id="sam"><p class="lo"></p></datalist>
+											</div></td>
+											<td><div class="form-group">
+												<input type="text" class="form-control" id="usr" name="old_value[]" placeholder="Enter Value">
+											</div></td>
+{#											<td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-7">#}
+{#											  <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">#}
+{#											  </label>#}
+{#											</td>#}
+                                            <td style="display: none;" class="old_prom">
+                                                <div class="form-group">
+
+											        <input type="text" class="form-control" id="usr" name="old_prompts[]" placeholder="Enter USer Prompts">
+											    </div>
+											</td><td><i class="material-icons delete_old_param">&#xE872;</i></td>
+
+										  </tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row" onclick="add_old_param()">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i> New Parameter</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border ">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 all_intent_head"><br>
+								<span class="add_intent_head">Responses &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons side_icon" style="vertical-align:middle;margin-left: 400px;    margin-top: 0px;">&#xE313;</i></span>
+							</div>
+
+						</div><br>
+						<div class="all_intent" style="display:none;">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table table-bordered old_resp_tab">
+										<thead >
+
+											<th>S.No</th>
+											<th> Required</th>
+                                        <th>Delete</th>
+
+
+										</thead>
+										<tbody class="temp_res">
+										  <tr>
+											<td></td>
+											<td><div class="form-group">
+
+											  <input type="text" class="form-control" id="usr" name="old_responses[]" placeholder="Enter response Text">
+											</div></td>
+
+                                             <td><i class="material-icons delete_old_resp">&#xE872;</i></td>
+										  </tr>
+
+										</tbody>
+									</table>
+									<div class="row" onclick="add_old_res()">
+										<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+											<button type="button" class="btn btn-default mybtn" style="outline:none;width:100%;"> Add Responses</button>
+										</div>
+									</div><br>
+								</div>
+							</div>
+						<br>
+						</div>
+					</div>
+				</div><br>
+                            </form>
+			</div>
+			<div class="intent">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" ><br>
+								<i class="material-icons intent_icon" style="vertical-align:middle">&#xE0C9;</i> <span class="intent_text">Intents</span>
+							</div>
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" align="center"><br>
+								<button onclick="add_new_intent();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								  Create Intent
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-10 col-md-10 col-lg-10 col-xs-10">
+{#						<form>#}
+						  <div class="input-group">
+							<input type="text" class="form-control" placeholder="Search Intent">
+							<div class="input-group-btn">
+							  <button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							  </button>
+							</div>
+						  </div>
+{#						</form>#}
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2"><br>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -30px;">
+						<i class="material-icons" style="vertical-align:middle;">&#xE152;</i> Filter
+						</button>
+					</div>
+				</div>
+				<br>
+                <div class="all_int">
+                    				<div class="row int_all">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<table class="table_value">
+
+							<tbody>
+								<tr>
+									<td><p class="intent_name"></p></td>
+
+								</tr>
+
+							</tbody>
+					  </table>
+					</div>
+				</div>
+
+                </div>
+
+{#				<div class="row">#}
+{#					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#						<table class="table table-bordered">#}
+{#						#}
+{#							<tbody>#}
+{#								<tr>#}
+{#									<td><i class="material-icons" style="vertical-align:middle;color: #00bcd5;">&#xE047;</i> Venkateshwaran - Designer <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE2C0;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#							#}
+{#								</tr>#}
+{#						  #}
+{#							</tbody>#}
+{#					  </table>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="row">#}
+{#					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#						<table class="table table-bordered">#}
+{#						#}
+{#							<tbody>#}
+{#								<tr>#}
+{#									<td><i class="material-icons" style="vertical-align:middle;color: #00bcd5;">&#xE047;</i> Venkateshwaran - Designer <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE2C0;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#							#}
+{#								</tr>#}
+{#						  #}
+{#							</tbody>#}
+{#					  </table>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="row">#}
+{#					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#						<table class="table table-bordered">#}
+{#						#}
+{#							<tbody>#}
+{#								<tr>#}
+{#									<td><i class="material-icons" style="vertical-align:middle;color: #00bcd5;">&#xE047;</i> Venkateshwaran - Designer <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE2C0;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#							#}
+{#								</tr>#}
+{#						  #}
+{#							</tbody>#}
+{#					  </table>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="row">#}
+{#					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#						<table class="table table-bordered">#}
+{#						#}
+{#							<tbody>#}
+{#								<tr>#}
+{#									<td><i class="material-icons" style="vertical-align:middle;color: #00bcd5;">&#xE047;</i> Venkateshwaran - Designer <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE2C0;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#							#}
+{#								</tr>#}
+{#						  #}
+{#							</tbody>#}
+{#					  </table>#}
+{#					</div>#}
+{#				</div>#}
+			</div>
+			<div class="oldenitity" style="display:none;">
+                <form id="old_entity_form" method="post" action="/update_entity">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8" >
+{#								<form action="#">#}
+								  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+									<input class="mdl-textfield__input" type="text" id="old_entity_name" name="old_entity_name" required>
+									<label class="mdl-textfield__label" for="sample1" style="width:100%;"></label>
+								  </div>
+								  
+{#								</form>#}
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" align="center"><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;" onclick="save_old_ent()">
+								 Save
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+						  <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" checked name="optradio">
+						  <span class="mdl-checkbox__label" style="color: #757575 !important;font-size: 13px;">Define synonyms </span>
+						</label>
+					</div>
+					<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+						  <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" name="optradio">
+						  <span class="mdl-checkbox__label" style="color: #757575 !important;font-size: 13px;">Allow automated expansion
+						  </span>
+						</label>
+					</div>
+				</div><br>
+				<div class="synonyms">
+                    <div class="old_syn"></div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <table class="table table-bordered">
+                                <tbody class="old_tbody">
+                                </tbody>
+                                             </table>
+                                                   </div>
+                                                    </div>
+{#					<div class="row">#}
+{#						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#							<table class="table table-bordered">#}
+{#							#}
+{#								<tbody>#}
+{#									<tr>#}
+{#										<td style="text-align:center;"> <input type="text" size="5"><input type="text" size="20"> <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE254;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#								#}
+{#									</tr>#}
+{#							  #}
+{#								</tbody>#}
+{#						  </table>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="row">#}
+{#						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#							<table class="table table-bordered">#}
+{#							#}
+{#								<tbody>#}
+{#									<tr>#}
+{#										<td style="text-align:center;"> Click here to edit entry <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE254;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#								#}
+{#									</tr>#}
+{#							  #}
+{#								</tbody>#}
+{#						  </table>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="row">#}
+{#						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#							<table class="table table-bordered">#}
+{#							#}
+{#								<tbody>#}
+{#									<tr>#}
+{#										<td style="text-align:center;"> Click here to edit entry <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE254;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{#								#}
+{#									</tr>#}
+{#							  #}
+{#								</tbody>#}
+{#						  </table>#}
+{#						</div>#}
+{#					</div>#}
+					<div class="row old_temp_ent" onclick="add_old_ent()">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i>  Add New Row</p>
+						</div>
+					</div>
+				</div>
+				<div class="expansion" style="display:none;">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+							
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+								
+									</tr>
+							  
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+							
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+								
+									</tr>
+							  
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+							
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+								
+									</tr>
+							  
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+							
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+								
+									</tr>
+							  
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+							
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+								
+									</tr>
+							  
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i>  Add New Row</p>
+						</div>
+					</div>
+				</div>
+                    </form>
+			</div>
+            	<div class="addenitity" style="display:none;">
+                    <form id="new_ent_form" method="post" action="new_entity">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8" >
+{#								<form action="#">#}
+								  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+									<input class="mdl-textfield__input" type="text" id="new_entity_name" name="new_entity_name" required>
+									<label class="mdl-textfield__label" for="sample1" style="width:100%;">Entity Name</label>
+								  </div>
+
+{#								</form>#}
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" align="center"><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;" onclick="create_new_entity()">
+								 Save
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+						  <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" checked name="optradio">
+						  <span class="mdl-checkbox__label" style="color: #757575 !important;font-size: 13px;">Define synonyms </span>
+						</label>
+					</div>
+					<div class="col-sm-6 col-md-6 col-xs-6 col-lg-6">
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+						  <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" name="optradio">
+						  <span class="mdl-checkbox__label" style="color: #757575 !important;font-size: 13px;">Allow automated expansion
+						  </span>
+						</label>
+					</div>
+				</div><br>
+				<div class="synonyms">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody class="new_tbody">
+									<tr>
+										<td style="text-align:center;"><input type="text" name="sub_name[]" size="4"><input type="text" size="20" name="sub_attr[]"> Click here to edit entry <span style="float: right;cursor:pointer;color: #757575 !important;"><i class="material-icons new_ent_del" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+
+					<div class="row new_temp_ent" onclick="add_new_ent()">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i>  Add New Row</p>
+						</div>
+					</div>
+				</div>
+				<div class="expansion" style="display:none;">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<table class="table table-bordered">
+
+								<tbody>
+									<tr>
+										<td style="text-align:center;"> Enter Value <span style="float: right;cursor:pointer;color: #757575 !important;"><span></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>
+
+									</tr>
+
+								</tbody>
+						  </table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<p style="color: #757575 !important;font-size: 13px;color:#00BCD4;"> <i class="material-icons" style="vertical-align:middle;color:#00BCD4;">&#xE147;</i>  Add New Row</p>
+						</div>
+					</div>
+				</div>
+                        </form>
+			</div>
+			<div class="enitity" style="display:none;">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" ><br>
+								<i class="material-icons intent_icon" style="vertical-align:middle">&#xE335;</i> <span class="intent_text">Enities</span>
+							</div>
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" align="center"><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;" onclick="add_entity()">
+								  Create Entity
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row temp_old_entity">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+{#						<form>#}
+						  <div class="input-group">
+							<input type="text" class="form-control" placeholder="Search Enities">
+							<div class="input-group-btn">
+							  <button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							  </button>
+							</div>
+						  </div>
+{#						</form>#}
+					</div>
+					<!-- <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2"><br>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -30px;">
+						<i class="material-icons" style="vertical-align:middle;">&#xE152;</i> Filter
+						</button>
+					</div> -->
+				</div>
+				<br>
+
+{#				<div class="row">#}
+{#					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">#}
+{#						<table class="table table-bordered old_ent_tab">#}
+{##}
+{#							<tbody>#}
+{#								<tr>#}
+{#                                    <td> <span class="enti_name">@ Venkateshwaran - Designer</span> <span style="float: right;cursor:pointer;color: #757575 !important;"><span><i class="material-icons" style="vertical-align:middle;">&#xE2C0;</i></span>&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE872;</i></span></td>#}
+{##}
+{#								</tr>#}
+{##}
+{#							</tbody>#}
+{#					  </table>#}
+{#					</div>#}
+{#				</div>#}
+
+			</div>
+			<div class="trianing" style="display:none;">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-9 col-md-9 col-lg-9 col-xs-9" ><br>
+								<i class="material-icons intent_icon" style="vertical-align:middle">&#xE80C;</i> <span class="intent_text">Training</span>
+							</div>
+							<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" align="center"><br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								  upload
+								</button>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<ul class="nav nav-tabs">
+						  <li class="active" ><a data-toggle="tab" href="#home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Training &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+						  <li><a data-toggle="tab" href="#menu1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; History &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+						 
+						</ul>
+
+						<div class="tab-content">
+						  <div id="home" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table table-bordered">
+										<thead class="thead">
+										  <tr>
+											<th>Dialogs</th>
+											<th>Requests</th>
+											<th>Unmatched</th>
+											<th>Time</th>
+											<th>view</th>
+										  </tr>
+										</thead>
+										<tbody style="color: #757575 !important;font-size: 13px;">
+										  <tr>
+											<td>domestic flight from  chennai to bangalore on 31jan for 1 passenger and trip type is 1 and class type is E</td>
+											<td>6</td>
+											<td>1</td>
+											<td>23days</td>
+											<td><i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>domestic flight from  chennai to bangalore </td>
+											<td>6</td>
+											<td>1</td>
+											<td>23days</td>
+											<td><i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>domestic flight from  chennai to bangalore </td>
+											<td>6</td>
+											<td>1</td>
+											<td>23days</td>
+											<td><i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>domestic flight from  chennai to bangalore </td>
+											<td>6</td>
+											<td>1</td>
+											<td>23days</td>
+											<td><i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>domestic flight from  chennai to bangalore on 31jan for 1 passenger and trip type is 1 and class type is E</td>
+											<td>6</td>
+											<td>1</td>
+											<td>23days</td>
+											<td><i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										</tbody>
+									  </table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+									<div class="row">
+										<div class="col-sm-9 col-md-9 col-lg-9 col-xs-9" ><br>
+											
+										</div>
+										<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" align="center"><br><br>
+											<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;width:100%;">
+											  Next
+											</button>
+										</div>
+									</div>
+								</div>
+							</div><br>
+						  </div>
+						  <div id="menu1" class="tab-pane fade">
+							<div class="row">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+									<table class="table ">
+										<thead class="thead">
+											<div class="row">
+												<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" >
+													<div class="row">
+														<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+														<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" >
+															<div class="form-group">
+																<br>
+																<input class="form-control" id="inputdefault" type="text" style="width:100%;" placeholder="12"> 
+																
+															</div>
+														</div>
+														<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"><br>
+															<span style="margin-top: 6px;position: absolute;">OF 25</span>
+														</div>
+														<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" align="center">
+															<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: 15px;width:100%;">
+															  Next
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</thead>
+										<tbody style="color: #757575 !important;font-size: 13px;">
+										  <tr>
+											<td>Entertainment</td>
+											
+											<td colspan="4" style="text-align:right;">23days Ago<i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>Entertainment</td>
+											
+											<td colspan="4" style="text-align:right;">23days Ago<i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>Entertainment</td>
+											
+											<td colspan="4" style="text-align:right;">23days Ago<i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>Entertainment</td>
+											
+											<td colspan="4" style="text-align:right;">23days Ago<i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										  <tr>
+											<td>Entertainment</td>
+											
+											<td colspan="4" style="text-align:right;">23days Ago<i class="material-icons" style="vertical-align:middle;">&#xE315;</i></td>
+										  </tr>
+										</tbody>
+									  </table>
+								</div>
+							</div>
+						  </div>
+						  
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- Add New Agent -->
+			<div class="newagent" style="display:none;">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" >
+{#								<form action="#">#}
+								  <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+									<input class="mdl-textfield__input" type="text" id="agent_name">
+									<label class="mdl-textfield__label" for="sample1" style="width:100%;">Add Agent Name</label>
+								  </div>
+
+{#								</form>#}
+							</div>
+							<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2" align="center">
+								<input type="file" class="myimg" onchange="readURL(this)" style="display:none;"/>
+								<div class="mycricle" style="text-align:center;">
+									<img src="../static/images/b.png" class="my_img" onclick="$('.myimg').click();" /><br>
+
+								</div>
+								<!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								 Create
+								</button><i class="material-icons more_icon">&#xE5D4;</i> -->
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4" align="center"><br><br>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="add_agent()" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								 Create
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</div><br>
+
+
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<div class="alert alert-success">
+							Agent  Created Successfully
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- View All Agent -->
+			<div class="allagent" style="display:none;">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" ><br>
+								<i class="material-icons intent_icon" style="vertical-align:middle">&#xE021;</i> <span class="intent_text">Agents</span>
+							</div>
+							<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" align="center"><br>
+								<button onclick="addnew_agent();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="background: linear-gradient(40deg,#00BCD4,#00BCD4);margin-top: -15px;">
+								  Create Agent
+								</button><i class="material-icons more_icon">&#xE5D4;</i>
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+{#						<form>#}
+						  <div class="input-group">
+							<input type="text" class="form-control" placeholder="Search Intent">
+							<div class="input-group-btn">
+							  <button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							  </button>
+							</div>
+						  </div>
+{#						</form>#}
+					</div>
+					
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<table class="table table-bordered">
+						
+							<tbody>
+
+						  
+							</tbody>
+					  </table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+						<table class="table table-bordered view_all">
+						
+							<tbody class="all_age">
+								<tr>
+                                    <td><span class="list_int_name"></span></td>
+{#									<td> Venkateshwaran - Designer <span style="float: right;cursor:pointer;color: #757575 !important;">&nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle;">&#xE8B8;</i></span></td>#}
+{#							#}
+								</tr>
+						  
+							</tbody>
+					  </table>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 rightside">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 headdiv_center" >
+					<div class="row">
+						<div class="col-sm-10 col-md-10 col-lg-10 col-xs-10">
+{#							<form action="#">#}
+							  <div class="mdl-textfield mdl-js-textfield">
+								<input class="mdl-textfield__input" type="text" id="chat_input" onkeydown="chat(this)">
+								<label class="mdl-textfield__label" for="sample1">Try it Now</label>
+							  </div>
+							  
+{#							</form>#}
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+							
+							<i class="material-icons logout  mdl-button mdl-js-button mdl-js-ripple-effect"  title="LogOut">&#xE8C8;</i>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+							<i class="material-icons side_icon" style="vertical-align:middle">&#xE32E;</i><span class="side_text">Setup Assistant integration</span>
+						</div>
+						
+					</div><br>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+					<ul class="nav nav-tabs">
+					  <li class="active" ><a data-toggle="tab" href="#home1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Agent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					  <li><a data-toggle="tab" href="#menu2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Domain &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					 
+					</ul>
+
+					<div class="tab-content">
+					  <div id="home1" class="tab-pane fade in active">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">User Says</p>
+										<p class="response_text chat_user_says" style="font-size:15px"></p>
+									</div>
+{#									<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"><br>#}
+{#										<p style="text-align:right;color:#2196F3">Copy URL</p>#}
+{#									</div>#}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">Default Response</p>
+										<p class="response_text chat_response" style="font-size:15px"></p>
+									</div>
+{#									<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"><br>#}
+{#										<p style="text-align:right;color:#2196F3">Copy URL</p>#}
+{#									</div>#}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">Intent</p>
+										<p class="response_text chat_intent"></p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+                          			<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+                                 <div class="chat_deta"></div>
+{#                                <p class="chat_param">param name</p><p class="chat_value">value</p><br>#}
+
+
+
+{#								<div class="row">#}
+{#									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>#}
+{#										<p style="margin-bottom: 23px;color: #b8bbc4;">Intent</p>#}
+{#										<p class="response_text chat_intent">Bus</p>#}
+{#									</div>#}
+{##}
+{#								</div>#}
+							</div>
+						</div><br><br>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<button type="button" class="btn btn-default mybtn" style="outline:none;width:100%;"> Show JSON</button>
+							</div>
+						</div><br>
+					  </div>
+					  <div id="menu2" class="tab-pane fade">
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">User Says</p>
+										<p class="response_text">Bus</p>
+									</div>
+{#									<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"><br>#}
+{#										<p style="text-align:right;color:#2196F3">Copy URL</p>#}
+{#									</div>#}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">Default Response</p>
+										<p class="response_text">Enter Source?</p>
+									</div>
+{#									<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"><br>#}
+{#										<p style="text-align:right;color:#2196F3">Copy URL</p>#}
+{#									</div>#}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">Intent</p>
+										<p class="response_text">Not Available</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 side_bottom_border mdl-js-button mdl-js-ripple-effect">
+								<div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"><br>
+										<p style="margin-bottom: 23px;color: #b8bbc4;">Action</p>
+										<p class="response_text">Not Available</p>
+									</div>
+									
+								</div>
+							</div>
+						</div><br><br>
+						<div class="row">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<button type="button" class="btn btn-default mybtn" style="outline:none;width:100%;"> Show JSON</button>
+							</div>
+						</div><br>
+					  </div>
+					  
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+</div>
+{% if exist and open %}
+<script type="text/javascript">
+console.log("both");
+    alert("{{ exist }}");
+    intent_open();
+</script>
+{% elif open%}
+<script>
+console.log("single");
+ $(document).ready(function(){
+     intent_open();
+ });
+ </script>
+
+ {% endif %}
+<script type="text/javascript">
+  $('tbody').sortable();
+</script>
+</body>
+</html>
+<html>
+<body>
+    <a href=”/your_flask_funtion”><input type=”button” value=”call_flask_funtion”></a>
+</body>
+</html>
